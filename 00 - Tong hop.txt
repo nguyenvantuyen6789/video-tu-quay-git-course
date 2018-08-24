@@ -1,0 +1,105 @@
+
+Local
+	- Git init
+
+Remote
+	- git clone url
+	- git clone url abc
+
+	- git config --global alias.oldr "log --oneline --decorate"
+	(oldr: oneline decorate)
+	
+	- git remote -v và git remote show <name> (origin)
+	- git remote add origin (ten nay chua ton tai) url
+	git remote
+	- git remote -v và git remote show origin để kiểm tra
+	
+	- git pull --allow-unrelated-histories study-remote master
+	  git pull                             study-remote master
+	- git push study-remote master (-u: lần sau chỉ git push là được)
+	
+Alias (show all aliases: git config --get-regexp alias)
+
+	- git config --global alias.al "config --get-regexp alias"
+	- git config --global alias.st status
+	- git config --global alias.co checkout
+	- git config --global alias.cm commit
+	- git config --global alias.a add
+	- git config --global alias.aa "add *" (add all)
+	
+	- git config --global alias.branch br
+	- git config --global alias.rt remote
+	- git config --global alias.me merge
+	- git config --global alias.unstage "reset HEAD --"
+	- git config --global alias.htr "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+	- git config --global alias.last "log -1 HEAD" (commit cuối cùng)
+
+Branch
+	- git branch
+	- git branch task-login
+	- git checkout task-login (-b: tạo và chuyển nhánh luôn)
+	- git branch -m task-login task-logout (đổi tên nhánh)
+	
+	- git branch -d task-login (nhánh đã merge)
+	- git branch -D task-login (nhánh chưa merge)
+
+Branch Remote
+	- git branch -a (danh sách nhánh local và remote) x
+	- git push origin init (đẩy nhánh lên remote. init: tên nhánh)
+	- git push origin :init (xoá nhánh. init: tên nhánh)
+	- git remote show origin (xem nhánh trên remote)
+	- git ls-remote origin (xem nhánh trên remote)
+	- git checkout remotes/origin/task-login (Chuyển nhánh theo 1 nhánh trên remote)
+	- git clone -b task-login https://github.com/nguyenvantuyen6789/remote-mweb.git (remote url của dự án)
+Merge
+	- git merge task-login
+	- git branch --merged
+	- git branch --no-merged
+	
+	- git merge task-login --no-ff (không fast forward. Nghĩa là thêm 1 commit mới)
+	
+	- git rebase master (đang ở nhánh bugfix)
+	
+	- git rebase --continute (khi conflic)
+	
+Tag
+	- git tag (show)
+	- git show ver-2x
+	- git tag ver-2x (Tag lightweight)
+	- git tag -a publish-good -m "Very good" (Tag Annotated)
+	
+	- git tag -d ver-2x
+	
+	- git tag -a ver-0x ID-Tag -m "Very good" (tạo cho commit bất kì)
+	
+	- git checkout -b init (tên nhánh) init
+	
+	đẩy tag lên trên remote (github)
+	- git push origin (tên) ver-0x (cho tag ver-0x lên)
+	- git push --tags (cho tất cả tag lên)
+	- git push origin -d fig-bug (xoá tag trên remote github)
+	
+Diff
+	- git difftool
+	- git difftool HEAD (working tree và local repo)
+	nghĩa là file readme.txt đang code và file readme.txt đã commit
+	- git difftool --staged HEAD (file staging và local repo)
+	nghĩa là file readme.txt sửa, đã add nhưng chưa commit và file readme.txt đã commit
+	- git difftool master origin/master (file local repo và remote)
+	nghĩa là file trên git local đã được commit và file trên github
+	
+	- git difftool ID1 ID2 (Id của commit thứ 1 và Id của commit thứ 2)
+	- git difftool Tag1 Tag2 (Tag thứ 1 và Tag thứ 2)
+	
+Stash
+	- git stash list
+	- git stash
+	
+	- git stash pop
+	- git stash apply stash@{0}
+	
+	- git stash drop stash@{0}
+	- git stash clear
+	
+Reflog
+	- git reflog	(xem cả log và cả các hành động khác)
